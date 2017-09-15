@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>methylSaguaro</title>
+    <style type="text/css">a {text-decoration: none}</style>
+  </head>
+  <body>
+    <div align="center"><a
+        href="https://grabherrgroup.github.io/methylSaguaro/"><img
+          src="images/logo.png" alt="logo" width="428" height="176"
+          border="0"></a><br>
+      <br>
+      <table width="647" height="61" cellspacing="2" cellpadding="10"
+        border="0" bgcolor="#ffffff">
+        <tbody>
+          <tr>
+            <td valign="middle" align="center"><a
+                href="https://sourceforge.net/projects/saguarogw/"
+                style="text-decoration: none"><font size="+1"
+                  color="#006600"><b>Get Saguaro<br>
+                  </b></font></a></td>
+            <td valign="middle" align="center"><a
+                href="https://github.com/GrabherrGroup/methylSaguaro"><font
+                  size="+1" color="#006600"><b>View on GitHub</b></font></a><br>
+            </td>
+            <td valign="middle" align="center"><a
+                href="https://grabherrgroup.github.io/methylSaguaro/tutorial.html"><font
+                  size="+1" color="#006600"><b>Pipeline Manual</b></font></a><br>
+            </td>
+            <td valign="middle" align="center"><a
+href="https://github.com/GrabherrGroup/methylSaguaro/raw/master/pipeline.zip"><font
+                  size="+1" color="#006600"><b>Get the pipeline</b></font></a><br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+    </div>
+    <h1 align="left">Instructions for running the pipeline</h1>
+    <h1> </h1>
+    There are 3 steps for doing the analysis with methylSaguaro:<br>
+    <br>
+    1. merging the data and formatting it according to methylSaguaro<br>
+    2. Running Saguaro <br>
+    3. Extracting the results from the output for further analysis and
+    generating PCA plots.<br>
+    <br>
+    Start by downloading the pipeline file, unzip it and then change the
+    directory to the unzipped folder, i.e. "cd pipeline".<br>
+    We have used TCGA data so the first step is to merge all the files
+    (located in <i>myfolder</i>) and restructure it to match with
+    Saguaro readable format. <br>
+    <br>
+    <title></title>
+    ./merge.sh myfolder output [pattern]<br>
+    <blockquote>myfolder: the folder that contains all the files with
+      beta values<br>
+      cancerMerged: the name of the file that will contain the merged,
+      formatted data<br>
+      pattern: choose 0 to select tumor types, 1 to select normal types
+      and 2 to select control samples. If nothing is set all samples are
+      selected.<br>
+    </blockquote>
+    Now you are ready to run Saguaro following the instructions here.<br>
+    <br>
+    When the Saguaro computations are complete,&nbsp; run the following
+    script to annotate the differentiating regions and generate distance
+    matrices.<br>
+    <br>
+    perl processMethylSaguaroOutput.pl -i inputFile -s saguaroResults -c
+    CpGpositions -d delimiter -o outputFolder<br>
+    <blockquote>inputFile: the file which was used as the input for
+      Saguaro<br>
+      saguaroResults: the folder containing Saguaro results<br>
+      CpGpositions: 450k_dictionary.csv or 850k_dictionary.csv depending
+      on the array<br>
+      delimiter: the delimiter of CpGpositions file<br>
+      outputFolder: the folder that will contain the results<br>
+      <br>
+      <br>
+      <br>
+    </blockquote>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div align="center"><br>
+    </div>
+    <p> <br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    &nbsp; <br>
+    <br>
+  </body>
+</html>
