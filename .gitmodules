@@ -1,0 +1,6 @@
+[submodule "Saguaro"]
+	path = Saguaro
+	url = https://github.com/GrabherrGroup/Saguaro
+[submodule "ryggrad"]
+	path = ryggrad
+	url = https://github.com/GrabherrGroup/ryggrad
