@@ -2,7 +2,8 @@
 
 folder="$1"
 out="$2"
-pattern="$3"
+type="$3"
+pattern="$4"
 homedir=$(pwd)
 H=$(ls -l $folder | grep "^d" | awk '{print $9}')
 N=$(ls -l $folder | grep "^d" | wc -l )
@@ -40,5 +41,4 @@ for ((i = 1; i<=$N-1 ; i++));do
 done
 rm $second
 cd $homedir
-perl formatInput.pl -i $merged -d 450k_dictionary.csv -o $out -c m -s t
-rm $merged
+perl methylSaguaroFormatter.pl -i $merged -d $type -o $out -c m
