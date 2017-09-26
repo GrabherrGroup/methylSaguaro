@@ -10,8 +10,10 @@ include_directories(./)
 
 
 # MethylSaguaro binaries
+set(SOURCE_FILES_FREQ2HMMFEATURE ryggrad/src/base/ErrorHandling.cc ryggrad/src/base/FileParser.cc ryggrad/src/base/StringUtil.cc ryggrad/src/general/DNAVector.cc ryggrad/src/util/mutil.cc Saguaro/src/Freq2HMMFeature.cc Saguaro/src/HMMDistance.cc) 
 set(SOURCE_FILES_METHYLSAGUARO ryggrad/src/base/ErrorHandling.cc ryggrad/src/base/FileParser.cc ryggrad/src/base/StringUtil.cc ryggrad/src/general/DNAVector.cc ryggrad/src/util/mutil.cc Saguaro/src/HMMDecode.cc Saguaro/src/HMMDistance.cc src/MethylSaguaro.cc) 
 
+add_executable(Freq2HMMFeature ${SOURCE_FILES_FREQ2HMMFEATURE})
 add_executable(MethylSaguaro ${SOURCE_FILES_METHYLSAGUARO})
 
 
