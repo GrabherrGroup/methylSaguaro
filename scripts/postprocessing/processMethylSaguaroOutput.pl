@@ -13,27 +13,35 @@ use Getopt::Long;
 my $localtrees;
 my $cactusFile;
 my $dictionary;
-my $delimiter;
+my $delimiter=",";
 my $folder;
 my $input;
+my $output;
 
-if (@ARGV != 12 ) {
-    print "Missing argument! Usage: -i inputFile -l LocalTrees.out -s saguaro.cactus -c CpGpositions -d delimiter -o outputFolder\n";
+if (@ARGV < 8 ) {
+    print "Missing argument! Usage: -i inputFile -o outputFolder -d dictionary [-ds DictionarySeperator] -r resultsFolder\n";
     exit;
 }
 
-GetOptions ("i=s" => \$input,    # Saguaro input file
-	    "l=s"   => \$localtrees,      # LocalTrees.out file
-	    "s=s" => \$cactusFile,    # saguaro.cactus file
-	    "c=s" => \$dictionary , # CpGpositions file
-            "d=s" => \$delimiter , # CpGpositions file's delimiter
-	    "o=s" => \$folder ) # output results folder
-or die("Error in command line arguments! Usage: -i inputFile -l LocalTrees.out -s saguaro.cactus -c CpGpositions -d delimiter -o outputFolder\n");
+GetOptions ("i=s" => \$input,    # methylSaguaro input file
+	    "o=s" => \$output,  # methylSaguaro output folder
+	    "d=s" => \$dictionary , # dictionary file
+            "ds:s" => \$delimiter , # dictionary file's delimiter
+	    "r=s" => \$folder ) # output results folder
+or die("Error in command line arguments! Usage: -i inputFile -o outputFolder -d dictionary [-ds DictionarySeperator] -r resultsFolder\n");
 
 chomp $dictionary;
-chomp $localtrees;
-chomp $cactusFile;
+chomp $output;
 chomp $folder;
+
+for ($dictionary){
+    if (/27k/) {$dictionary="27k_dictionary.csv"}
+    elsif (/450k/) {$dictionary="450k_dictionary.csv"}
+    elsif (/850k/) {$dictionary="850k_dictionary.csv"}
+}
+
+$cactusFile = $output . "/saguaro.cactus";
+$localtrees = $output . "/LocalTrees.out";
 
 if (!-e $localtrees)
 {print "$localtrees does not exist!\n";
@@ -52,7 +60,6 @@ if (!-e $folder)
 
 open(DIC,$dictionary);
 open(IN,$input);
-#opne(CAT,$cactusFile);
 
 my ($record,$row,@rest);
 my $counter = 0;
@@ -77,6 +84,7 @@ while ($record = <DIC>){
 	$genes{$coordinate} = [$info[0],$info[3],"NA"];
     }
 }
+
 print "Done.\n";
 
 print "Extracting regions of each cactus ...\n";
@@ -107,7 +115,6 @@ for (my $i =0; $i <= 10; $i ++){   #considering cacti 11 and 12 as background
 	}
 	$cactiHash{$i} = \@positions;
 	$regionTracker{$i} = 1;
-	
     }
 }
 
@@ -164,9 +171,9 @@ chop $linesAfter;
 foreach my $key(keys %cactiHash){
     my $distance = $folder . "/cactus" . $key . "_distanceMatrix.txt";
     #open(OUT,">>$distance");
-    print "grep '^cactus$key\n' -A $linesAfter $cactusFile > $distance \n";
+    #print "grep '^cactus$key\n' -A $linesAfter $cactusFile > $distance \n";
     my $run = `grep '^cactus$key\$' -A $linesAfter $cactusFile > $distance`;
 }
 print "Done.\n";
 
-#print "The converted data was successfully written to $output\n";
+print "The results were successfully written to $folder\n";
