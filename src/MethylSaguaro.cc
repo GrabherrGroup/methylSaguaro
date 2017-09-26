@@ -391,7 +391,7 @@ int main( int argc, char** argv )
 
   char tmpPath[512];
   strcpy(tmpPath, argv[0]);
-  tmpPath[strlen(tmpPath)-7] = 0;
+  tmpPath[strlen(tmpPath)-13] = 0;
   cout << "Path to executable: " << tmpPath << endl;
   
 
