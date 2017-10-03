@@ -2,7 +2,7 @@
 
 if [[ "$#" < "4" ]]; then
     echo "Usage: ./mergeAndFormat with the following parameters ([] specifies optional ones)."
-    echo -e "\tmode=\"merge|format\" : 'merge' to merge TCGA files in a folder and format OR 'format' for already merged file"
+    echo -e "\tmode=\"merge|format\" : 'merge' to merge TCGA files in a folder and format, 'format' for already merged file"
     echo -e "\tin=\"folder|file\" : input either a folder (for merge option) or a file (for format option)"
     echo -e "\t[is=\",|t|s|;\"] : input file splitor "
     echo -e "\tout=\"output\" : output file"

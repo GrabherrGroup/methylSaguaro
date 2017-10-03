@@ -19,7 +19,7 @@ my $input;
 my $output;
 
 if (@ARGV < 8 ) {
-    print "Missing argument! Usage: -i inputFile -o outputFolder -d dictionary [-ds DictionarySeperator] -r resultsFolder\n";
+    print "Missing argument! Usage: -i inputFile -o outputFolder -d dictionary (27k|450k|850k|file) [-ds ,|t|s|;|...] -r resultsFolder\n";
     exit;
 }
 
@@ -28,7 +28,7 @@ GetOptions ("i=s" => \$input,    # methylSaguaro input file
 	    "d=s" => \$dictionary , # dictionary file
             "ds:s" => \$delimiter , # dictionary file's delimiter
 	    "r=s" => \$folder ) # output results folder
-or die("Error in command line arguments! Usage: -i inputFile -o outputFolder -d dictionary [-ds DictionarySeperator] -r resultsFolder\n");
+or die("Error in command line arguments! Usage: -i inputFile -o outputFolder -d dictionary (27k|450k|850k|file) [-ds ,|t|s|;|...] -r resultsFolder\n");
 
 chomp $dictionary;
 chomp $output;
