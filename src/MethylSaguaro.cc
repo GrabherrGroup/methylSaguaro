@@ -1,6 +1,6 @@
 #include <string>
 #include "ryggrad/src/base/CommandLineParser.h"
-#include "SaguaroCore.h"
+#include "Saguaro/src/SaguaroCore.h"
 
 
 int main( int argc, char** argv )
