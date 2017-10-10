@@ -63,17 +63,18 @@
     <br>
     <title></title>
     <blockquote> <i> ./scripts/preprocessing/mergeAndFormat.sh
-        mode="merge|format" in="folder|file" [is=",|t|s|;"] out="output"
-        dic="27k|450k|850k|file" [sub="0|1|2"] [ds=",|t|s|;"]</i><br>
+        mode="merge|format" input="folder|file" [is=",|t|s|;"]
+        output="output" dic="27k|450k|850k|file" [sub="0|1|2"]
+        [ds=",|t|s|;"]</i><br>
       <blockquote><i>mode:</i> 'merge' for TCGA downloaded data, where a
         folder contains other folders each keeping a sample beta values.
         'format' if the data is a single file with CpG sites on the rows
         and the beta value of each sample shown on the columns. The
         first row shows the samples IDs.<br>
-        <i>in:</i> either input folder (when mode="merge") or file (when
-        mode="format")<br>
+        <i>input:</i> either input folder (when mode="merge") or file
+        (when mode="format")<br>
         <i>is:</i> optional, input file column separator<br>
-        <i>out:</i> output file<br>
+        <i>output:</i> output file<br>
         <i>dic:</i> either 27k, 450k, 850k indicating one of Illumina's
         array or a file as a dictionary file with genomic positions of
         the CpG sites.<br>
