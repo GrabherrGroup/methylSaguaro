@@ -1,5 +1,5 @@
 # methylSaguaro
-Quick Statrt
+Quick Start
 
 git clone https://github.com/GrabherrGroup/methylSaguaro.git
 
