@@ -3,9 +3,9 @@
 if [[ "$#" < "4" ]]; then
     echo "Usage: ./mergeAndFormat with the following parameters ([] specifies optional ones)."
     echo -e "\tmode=\"merge|format\" : 'merge' to merge TCGA files in a folder and format, 'format' for already merged file"
-    echo -e "\tin=\"folder|file\" : input either a folder (for merge option) or a file (for format option)"
+    echo -e "\tinput=\"folder|file\" : input either a folder (for merge option) or a file (for format option)"
     echo -e "\t[is=\",|t|s|;\"] : input file splitor "
-    echo -e "\tout=\"output\" : output file"
+    echo -e "\toutput=\"output\" : output file"
     echo -e "\tdic=\"27k|450k|850k|file\" : type of the illumina array, or a file with CpG sites genomic positions"
     echo -e "\t[sub=\"0|1|2\"] : subgroup of samples; for merge option, tumors (0), normals (1), controls (2) or all (when null)"
     echo -e "\t[ds=\",|t|s|;\"] : if a file is provided for type, what is the splitor "
@@ -28,7 +28,7 @@ do
 	output)      out=${VALUE} ;;
 	dic)         type=${VALUE} ;;
 	sub)         pattern=${VALUE} ;;
-	s)          dicsep=${VALUE} ;;
+	ds)          dicsep=${VALUE} ;;
 	*)
     esac
 done
