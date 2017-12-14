@@ -11,4 +11,4 @@ make -C build
 
 ./bin/Freq2HMMFeature -i inputFile -o featuresFile
 
-./bin/MethylSaguaor -f featuresFile -o resultsFolder -iter numberOfIterations -t transitionPenalty
+./bin/MethylSaguaro -f featuresFile -o resultsFolder -iter numberOfIterations -t transitionPenalty
